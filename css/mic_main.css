@@ -2187,6 +2187,7 @@
 	}
 	#me{
 		margin-bottom: 2rem;
+		opacity: 0;
 	}
 		#me .pic {
 			border-bottom: 0px;
