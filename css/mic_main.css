@@ -2187,7 +2187,6 @@
 	}
 	#me{
 		margin-bottom: 2rem;
-		opacity: 0;
 	}
 		#me .pic {
 			border-bottom: 0px;
@@ -2198,7 +2197,7 @@
 			#me .pic:before {
 				content: '';
 				position: absolute;
-				background: url("/images/me.jpg");
+				background: url("/images/pic08.jpg");
 				width: 100%;
 				z-index: 1;
 			}
