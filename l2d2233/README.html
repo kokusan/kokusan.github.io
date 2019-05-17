@@ -1,0 +1,37 @@
+<h2 id="l2d233-for-Hexo"><a href="#l2d233-for-Hexo" class="headerlink" title="l2d233 for Hexo"></a>l2d233 for Hexo</h2><p>一个 Hexo 框架的 Live2D 看板娘<br>移植 <a href="https://qqdie.com/archives/l2d233.html">Typecho</a> 的 22&amp;33<br>预览: <a href="https://cnguu.github.io/hexo-live2d-2233/">https://cnguu.github.io/hexo-live2d-2233/</a></p>
+<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><ul>
+<li>Hexo 3.*</li>
+<li>jQuery</li>
+<li>Font Awesome<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2>以 NexT 6.* 为例子<h3 id="Step-1-→-Go-to-NexT-dir"><a href="#Step-1-→-Go-to-NexT-dir" class="headerlink" title="Step 1 → Go to NexT dir"></a>Step 1 → Go to NexT dir</h3>进入主题根目录<pre><code class="bash">$ <span class="built_in">cd</span> themes/next
+</code></pre>
+<h3 id="Step-2-→-Get-module"><a href="#Step-2-→-Get-module" class="headerlink" title="Step 2 → Get module"></a>Step 2 → Get module</h3>克隆至 <code>source/lib</code> 目录下:<pre><code class="bash">$ git <span class="built_in">clone</span> https://github.com/cnguu/hexo-live2d-2233.git <span class="built_in">source</span>/lib/l2d233
+</code></pre>
+<h3 id="Step-3-→-Set-it-up"><a href="#Step-3-→-Set-it-up" class="headerlink" title="Step 3 → Set it up"></a>Step 3 → Set it up</h3>修改站点配置 <code>_config.yml</code> :<pre><code class="yml"><span class="attr">l2d233:</span>
+<span class="attr">enable:</span> <span class="literal">true</span>
+</code></pre>
+<h3 id="Step-4-→-Add-file"><a href="#Step-4-→-Add-file" class="headerlink" title="Step 4 → Add file"></a>Step 4 → Add file</h3>打开文件 <code>theme/next/layout/_layout.swig</code>, 在 <code>&lt;/body&gt;</code> 之前添加如下内容:<pre><code class="html">{% include &#39;_third-party/l2d233.swig&#39; %}
+</code></pre>
+新建文件 <code>theme/next/layout/_third-party/l2d233.swig</code> :<pre><code class="html">{% if config.l2d233.enable %}
+  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"{{ url_for(theme.vendors._internal + '/l2d233/css/waifu.min.css') }}?v={{ version }}"</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"waifu"</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"waifu-tips"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"live2d"</span> <span class="attr">width</span>=<span class="string">"230"</span> <span class="attr">height</span>=<span class="string">"250"</span> <span class="attr">class</span>=<span class="string">"live2d"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"waifu-tool"</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"fa fa-home"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"fa fa-comments"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"fa fa-drivers-license-o"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"fa fa-street-view"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"fa fa-camera"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"fa fa-info-circle"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"fa fa-close"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>
+      <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"{{ url_for(theme.vendors._internal + '/l2d233/js/live2d.min.js') }}?v={{ version }}"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"{{ url_for(theme.vendors._internal + '/l2d233/js/waifu-tips.min.js') }}?v={{ version }}"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+{% endif %}
+</code></pre>
+<h2 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h2><pre><code class="bash">$ <span class="built_in">cd</span> themes/next/<span class="built_in">source</span>/lib/l2d233
+$ git pull
+</code></pre>
+<h2 id="LICENSE"><a href="#LICENSE" class="headerlink" title="LICENSE"></a>LICENSE</h2><a href="LICENSE">Mozilla Public License Version 2.0</a></li>
+</ul>
